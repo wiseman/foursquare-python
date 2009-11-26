@@ -50,6 +50,6 @@ OAuth::
 .. _foursquare API: http://groups.google.com/group/foursquare-api
 .. _basic HTTP authentication: http://en.wikipedia.org/wiki/Basic_access_authentication
 .. _OAuth: http://groups.google.com/group/foursquare-api/web/oauth
-.. _John Wiseman: http://twitter.com/
+.. _John Wiseman: http://twitter.com/lemonodor
 .. _LICENSE.txt: http://github.com/wiseman/foursquare-python/blob/master/LICENSE.txt
 .. _oauth.py: http://oauth.googlecode.com/svn/code/python/oauth/
