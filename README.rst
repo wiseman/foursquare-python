@@ -18,7 +18,7 @@ No authentication::
 
  >>> import foursquare
  >>> fs = foursquare.Foursquare()
- >>> fs.cities
+ >>> fs.cities()
  {'cities': [{'geolat': 52.378900000000002, 'name': 'Amsterdam', ...}]}
 
 Basic HTTP authentication::
