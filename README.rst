@@ -4,8 +4,9 @@
 foursquare
 ==========
 
-This python module lets you access the `foursquare API`_.  It supports no
-authentication, `basic HTTP authentication`_, and `OAuth`_.
+This python module lets you access the `foursquare API`_.  It supports
+unauthenticated access, `basic HTTP authentication`_, and `OAuth`_
+authorization.
 
 It supports all the v1 foursquare API methods.
 
