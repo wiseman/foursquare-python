@@ -1,8 +1,10 @@
+Copyright 2009 John Wiseman
+
 foursquare
 ==========
 
-This python module lets you access the foursquare API.  It supports no
-authentication, basic HTTP authentication, and OAuth.
+This python module lets you access the `foursquare API`_.  It supports no
+authentication, `basic HTTP authentication`_, and `OAuth`_.
 
 It supports all the v1 foursquare API methods.
 
@@ -40,3 +42,8 @@ OAuth::
  >>> credentials.set_access_token(user_token)
  >>> fs.user()
  {'user': {'city': {'geolat': 34.0443, 'name': 'Los Angeles', ...}}}
+
+
+.. _foursquare API: http://groups.google.com/group/foursquare-api
+.. _basic HTTP authentication: http://en.wikipedia.org/wiki/Basic_access_authentication
+.. _OAuth: http://groups.google.com/group/foursquare-api/web/oauth
