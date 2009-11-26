@@ -30,15 +30,13 @@ Basic HTTP authentication::
 
 OAuth::
 
->>> import foursquare
->>> credentials = foursquare.OAuthCredentials(oauth_key, oauth_secret)
->>> fs = foursquare.Foursquare(credentials)
->>> app_token = fs.request_token()
->>> auth_url = fs.authorize(app_token)
->>> print "Go to %s and authorize, then continue." % (auth_url,)
->>> user_token = fs.access_token(app_token)
->>> credentials.set_access_token(user_token)
->>> fs.user()
-{'user': {'city': {'geolat': 34.0443, 'name': 'Los Angeles', ...}}}
-
-
+ >>> import foursquare
+ >>> credentials = foursquare.OAuthCredentials(oauth_key, oauth_secret)
+ >>> fs = foursquare.Foursquare(credentials)
+ >>> app_token = fs.request_token()
+ >>> auth_url = fs.authorize(app_token)
+ >>> print "Go to %s and authorize, then continue." % (auth_url,)
+ >>> user_token = fs.access_token(app_token)
+ >>> credentials.set_access_token(user_token)
+ >>> fs.user()
+ {'user': {'city': {'geolat': 34.0443, 'name': 'Los Angeles', ...}}}
