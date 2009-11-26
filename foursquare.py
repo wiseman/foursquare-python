@@ -2,7 +2,7 @@
 Foursquare API Python module
 by John Wiseman <jjwiseman@gmail.com>
 
-Based on a Fire Eagle module by Steve Marshall<steve@nascentguruism.com>.
+Based on a Fire Eagle module by Steve Marshall <steve@nascentguruism.com>.
 
 Example usage:
 
