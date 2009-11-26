@@ -39,7 +39,7 @@ OAuth::
  >>> fs = foursquare.Foursquare(credentials)
  >>> app_token = fs.request_token()
  >>> auth_url = fs.authorize(app_token)
- >>> print "Go to %s and authorize, then continue." % (auth_url,)
+ >>> # Go to auth_url and authorize, then continue.
  >>> user_token = fs.access_token(app_token)
  >>> credentials.set_access_token(user_token)
  >>> fs.user()
