@@ -84,7 +84,6 @@ POST_HEADERS = {
 }
 
 
-
 FOURSQUARE_METHODS = {}
 
 def def_method(name, auth_required=False, server=API_SERVER,
@@ -222,7 +221,6 @@ def_method('setpings',
 def_method('test')
 
 
-
 class Credentials:
     pass
 
@@ -291,7 +289,6 @@ class NullCredentials(Credentials):
         return url + '?' + query, args, {}
 
 
-                
     
 class FoursquareException(Exception):
     pass
@@ -334,6 +331,7 @@ class Foursquare:
         for method in FOURSQUARE_METHODS:
             if not hasattr(self, method):
                 setattr(self, method, FoursquareAccumulator(self, method))
+
 
     def get_http_connection(self, server):
         return httplib.HTTPConnection(server)
@@ -396,7 +394,6 @@ class Foursquare:
                                           'required arguments are %s., optional arguments are %s.' % \
                                           (', '.join(meta['required']),
                                            ', '.join(meta['optional'])))
-                                                                                                                                                 
         
         # Token shouldn't be handled as a normal arg, so strip it out
         # (but make sure we have it, even if it's None)
@@ -405,7 +402,6 @@ class Foursquare:
             del kw['token']
         else:
             token = None
-
 
         # Build the request.
         cred_url, cred_args, cred_headers = self.credentials.build_request(
