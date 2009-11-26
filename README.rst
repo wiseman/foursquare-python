@@ -10,6 +10,7 @@ authorization.
 
 It supports all the v1 foursquare API methods.
 
+This module requires Leah Culver's oauth module, `oauth.py`_.
 
 Examples
 --------
@@ -51,3 +52,4 @@ OAuth::
 .. _OAuth: http://groups.google.com/group/foursquare-api/web/oauth
 .. _John Wiseman: http://twitter.com/
 .. _LICENSE.txt: http://github.com/wiseman/foursquare-python/blob/master/LICENSE.txt
+.. _oauth.py: http://oauth.googlecode.com/svn/code/python/oauth/
