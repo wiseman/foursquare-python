@@ -1,4 +1,5 @@
-Copyright 2009 John Wiseman
+Copyright 2009 `John Wiseman`
+Covered by the MIT License, see `LICENSE.txt`.
 
 foursquare
 ==========
@@ -47,3 +48,5 @@ OAuth::
 .. _foursquare API: http://groups.google.com/group/foursquare-api
 .. _basic HTTP authentication: http://en.wikipedia.org/wiki/Basic_access_authentication
 .. _OAuth: http://groups.google.com/group/foursquare-api/web/oauth
+.. _John Wiseman: http://twitter.com/
+.. _LICENSE.txt: http://github.com/wiseman/foursquare-python/blob/master/LICENSE.txt
