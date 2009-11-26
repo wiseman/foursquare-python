@@ -1,5 +1,5 @@
-|Copyright 2009 `John Wiseman`
-|Covered by the MIT License, see `LICENSE.txt`.
+| Copyright 2009 `John Wiseman`_
+| Covered by the MIT License, see `LICENSE.txt`.
 
 foursquare
 ==========
