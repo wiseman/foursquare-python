@@ -129,7 +129,6 @@ def_method('access_token',
 def_method('cities')
 
 def_method('checkcity',
-           auth_required=True,
            required=['geolat', 'geolong'])
 
 def_method('switchcity',
@@ -212,6 +211,12 @@ def_method('setpings',
            auth_required=True,
            http_method='POST',
            required=['self', 'uid'])
+
+# --------------------
+# Friend methods
+# --------------------
+
+# TBD
 
 
 # --------------------
