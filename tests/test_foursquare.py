@@ -4,7 +4,10 @@ import time
 import foursquare
 
 
-MY_COORDS=[34.09075, -118.27516]
+TEST_OAUTH = True
+
+MY_COORDS = [34.09075, -118.27516]
+
 
 class TestFoursquare(unittest.TestCase):
   def test_unauthenticated(self):
@@ -14,7 +17,6 @@ class TestFoursquare(unittest.TestCase):
     self.assertEqual(test_result['response'], 'ok')
 
     cities = fs.cities()
-    print cities
     self.failUnless('cities' in cities)
     self.failUnless(len(cities['cities']) > 0)
     self.failUnless(find_if(cities['cities'], lambda o: o['id'] == 34), "Where did LA go?")
@@ -29,8 +31,6 @@ class TestFoursquare(unittest.TestCase):
 
   def test_basic_auth(self):
     "Testing basic HTTP authentication."
-    username = raw_input('Enter your foursquare username: ')
-    password = raw_input('Enter your foursquare password: ')
     fs = foursquare.Foursquare(foursquare.BasicCredentials(username, password))
     test_result = fs.test()
     self.assertEqual(test_result['response'], 'ok')
@@ -43,6 +43,9 @@ class TestFoursquare(unittest.TestCase):
 
 
   def test_oauth(self):
+    if not TEST_OAUTH:
+      return
+    
     # Authorization dance.
     oauth_key = raw_input('Enter your foursquare oauth consumer key: ')
     oauth_secret = raw_input('Enter your foursquare oauth consumer secret: ')
@@ -75,6 +78,16 @@ class TestFoursquare(unittest.TestCase):
     venues = fs.venues(geolat=MY_COORDS[0], geolong=MY_COORDS[1], l=1)
     self.failUnless('groups' in venues)
     self.assertEqual(len(venues['groups'][0]['venues']), 1)
+
+
+  def test_friends(self):
+    "Testing friend methods."
+    fs = foursquare.Foursquare(foursquare.BasicCredentials(username, password))
+    self.failUnless('requests' in fs.friend_requests())
+    users = fs.findfriends_byname('william')
+    print len(users['users'])
+    self.failUnless('users' in users)
+    self.failUnless(len(users['users']) > 0)
     
 
 def find_if(objs, pred):
@@ -84,6 +97,12 @@ def find_if(objs, pred):
   return None
 
 
+
+username = None
+password = None
+
 if __name__ == '__main__':
-    unittest.main()
+  username = raw_input('Enter your foursquare username: ')
+  password = raw_input('Enter your foursquare password: ')
+  unittest.main()
     

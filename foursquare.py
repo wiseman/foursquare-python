@@ -216,7 +216,35 @@ def_method('setpings',
 # Friend methods
 # --------------------
 
-# TBD
+def_method('friend_requests',
+           auth_required=True)
+
+def_method('friend_approve',
+           auth_required=True,
+           http_method='POST',
+           required=['uid'])
+
+def_method('friend_deny',
+           auth_required=True,
+           http_method='POST',
+           required=['uid'])
+
+def_method('friend_sendrequest',
+           auth_required=True,
+           http_method='POST',
+           required=['uid'])
+
+def_method('findfriends_byname',
+           auth_required=True,
+           required=['q'])
+
+def_method('findfriends_byphone',
+           auth_required=True,
+           required=['q'])
+
+def_method('findfriends_bytwitter',
+           auth_required=True,
+           required=['q'])
 
 
 # --------------------
@@ -411,7 +439,7 @@ class Foursquare:
         # Build the request.
         cred_url, cred_args, cred_headers = self.credentials.build_request(
             meta['http_method'],
-            meta['url_template'].substitute(method=method),
+            meta['url_template'].substitute(method=method.replace('_', '/')),
             kw,
             token=token)
 
