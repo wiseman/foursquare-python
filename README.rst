@@ -20,7 +20,7 @@ All arguments are keyword arguments, though required arguments come
 first and are in the order listed by the API documentation.
 
 All methods return the Python equivalent of the JSON response returned
-by the corresponding API method, if there is one.
+by the corresponding API method, if there is a response.
 
 Examples
 --------
