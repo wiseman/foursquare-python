@@ -1,5 +1,6 @@
 import unittest
 import time
+from getpass import getpass
 
 import foursquare
 
@@ -103,6 +104,6 @@ password = None
 
 if __name__ == '__main__':
   username = raw_input('Enter your foursquare username: ')
-  password = raw_input('Enter your foursquare password: ')
+  password = getpass('Enter your foursquare password: ')
   unittest.main()
     
