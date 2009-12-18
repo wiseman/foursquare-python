@@ -193,7 +193,7 @@ def_method('venue_proposeedit',
            # Documentation does not specify if crosstreet is required
            # or optional.
            required=['vid', 'name', 'address', 'crossstreet', 'city',
-                     'state', 'geolat', 'geolong']
+                     'state', 'geolat', 'geolong'],
            optional=['zip', 'phone'])
 
 def_method('venue_flagclosed',
