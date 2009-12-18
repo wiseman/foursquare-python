@@ -149,11 +149,11 @@ def_method('checkin',
            auth_required=True,
            http_method='POST',
            optional=['vid', 'venue', 'shout', 'private',
-                     'twitter', 'geolat', 'geolong'])
+                     'twitter', 'facebook', 'geolat', 'geolong'])
 
 def_method('history',
            auth_required=True,
-           optional=['l'])
+           optional=['l', 'sinceid'])
 
 
 # --------------------
@@ -185,7 +185,21 @@ def_method('addvenue',
            http_method='POST',
            required=['name', 'address', 'crossstreet',
                      'city', 'state', 'cityid'],
+           optional=['zip', 'phone', 'geolat', 'geolong'])
+
+def_method('venue_proposeedit',
+           auth_required=True,
+           http_method='POST',
+           # Documentation does not specify if crosstreet is required
+           # or optional.
+           required=['vid', 'name', 'address', 'crossstreet', 'city',
+                     'state', 'geolat', 'geolong']
            optional=['zip', 'phone'])
+
+def_method('venue_flagclosed',
+           auth_required=True,
+           http_method='POST',
+           required=['vid'])
 
 
 # --------------------
@@ -200,8 +214,17 @@ def_method('addtip',
            auth_required=True,
            http_method='POST',
            required=['vid', 'text'],
-           optional=['type'])
+           optional=['type', 'geolat', 'geolong'])
 
+def_method('tip_marktodo',
+           auth_required=True,
+           http_method='POST',
+           required=['tid'])
+
+def_method('tip_markdone',
+           auth_required=True,
+           http_method='POST',
+           required=['tid'])
 
 # --------------------
 # Settings methods
@@ -244,7 +267,7 @@ def_method('findfriends_byphone',
 
 def_method('findfriends_bytwitter',
            auth_required=True,
-           required=['q'])
+           optional=['q'])
 
 
 # --------------------
