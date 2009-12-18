@@ -8,7 +8,7 @@ This Python module lets you access the `foursquare API`_.  It supports
 unauthenticated access, `basic HTTP authentication`_, and `OAuth`_
 authorization.
 
-It supports all the v1 foursquare API methods as of 2009-12-03.
+It supports all the v1 foursquare API methods as of 2009-12-17.
 
 This module requires Leah Culver's oauth module, `oauth.py`_.
 
