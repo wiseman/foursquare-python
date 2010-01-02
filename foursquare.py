@@ -542,7 +542,7 @@ def history_generator(fs, batchsize=250, sinceid=0):
             sinceid = h['checkins'][-1]['id']
 
 
-def entire_history(fs, batchsize=250, sinceid=0):
+def all_history(fs, batchsize=250, sinceid=0):
     """Returns a tuple containing a user's entire checkin history.
     Note that the result is a tuple, not a dictionary with a single
     key/value containing the list of checkins like the
