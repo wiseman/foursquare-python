@@ -88,7 +88,8 @@ FOURSQUARE_METHODS = {}
 
 def def_method(name, auth_required=False, server=API_SERVER,
                http_method="GET", optional=[], required=[],
-               returns=None, url_template=API_URL_TEMPLATE):
+               returns=None, url_template=API_URL_TEMPLATE,
+               namespaced=True):
     FOURSQUARE_METHODS[name] = {
         'server': server,
         'http_method': http_method,
@@ -97,6 +98,7 @@ def def_method(name, auth_required=False, server=API_SERVER,
         'required': required,
         'returns': returns,
         'url_template': url_template,
+        'namespaced': namespaced
         }
 
 
@@ -107,19 +109,22 @@ def def_method(name, auth_required=False, server=API_SERVER,
 def_method('request_token',
            server=OAUTH_SERVER,
            returns='oauth_token',
-           url_template=OAUTH_URL_TEMPLATE)
+           url_template=OAUTH_URL_TEMPLATE,
+           namespaced=False)
 
 def_method('authorize',
            server=OAUTH_SERVER,
            required=['token'],
            returns='request_url',
-           url_template=OAUTH_URL_TEMPLATE)
+           url_template=OAUTH_URL_TEMPLATE,
+           namespaced=False)
 
 def_method('access_token',
            server=OAUTH_SERVER,
            required=['token'],
            returns='oauth_token',
-           url_template=OAUTH_URL_TEMPLATE)
+           url_template=OAUTH_URL_TEMPLATE,
+           namespaced=False)
 
 
 # --------------------
@@ -460,11 +465,19 @@ class Foursquare:
             token = None
 
         # Build the request.
-        cred_url, cred_args, cred_headers = self.credentials.build_request(
-            meta['http_method'],
-            meta['url_template'].substitute(method=method.replace('_', '/')),
-            kw,
-            token=token)
+        if meta['namespaced']:
+            cred_url, cred_args, cred_headers = self.credentials.build_request(
+                meta['http_method'],
+                meta['url_template'].substitute(method=method.replace('_', '/')),
+                kw,
+                token=token)
+        else:
+            cred_url, cred_args, cred_headers = self.credentials.build_request(
+                meta['http_method'],
+                meta['url_template'].substitute(method=method),
+                kw,
+                token=token)
+            
 
         # If the return type is the request_url, simply build the URL and 
         # return it witout executing anything    
