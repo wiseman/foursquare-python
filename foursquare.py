@@ -32,7 +32,7 @@ Example usage:
 >>> app_token = fs.request_token()
 >>> auth_url = fs.authorize(app_token)
 >>> print "Go to %s and authorize, then continue." % (auth_url,)
->>> user_token = fs.access_token(app_token)
+>>> user_token = fs.access_token(app_token, oauth_verifier)
 >>> credentials.set_access_token(user_token)
 >>> fs.user()
 {'user': {'city': {'geolat': 34.0443, 'name': 'Los Angeles', ...}}}
@@ -121,7 +121,7 @@ def_method('authorize',
 
 def_method('access_token',
            server=OAUTH_SERVER,
-           required=['token'],
+           required=['token', 'oauth_verifier'],
            returns='oauth_token',
            url_template=OAUTH_URL_TEMPLATE,
            namespaced=False)
@@ -572,4 +572,3 @@ def all_history(fs, batchsize=250, sinceid=0):
         if h['checkins']:
             history += h['checkins']
     return history
-
