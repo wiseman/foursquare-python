@@ -81,10 +81,10 @@ pass an ``oauth_verifier`` to ``access_token``:
  >>> fs = foursquare.Foursquare(credentials)
  >>> app_token = fs.request_token(oauth_callback='http://myapp.example/')
  >>> auth_url = fs.authorize(app_token)
-
+ 
  # Go to auth_url and authorize.  Note that we're passing an empty
  # string for the oauth_verifier.
-
+ 
  >>> user_token = fs.access_token(app_token, '')
  >>> credentials.set_access_token(user_token)
  >>> fs.user()
