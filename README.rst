@@ -73,7 +73,7 @@ authorization.
 
 The above is the most correct method, according to the `OAuth 1.0A
 spec`_.  But foursquare supports a less stringent mode if you don't
-pass a ``oauth_callback` argument, in which case you don't need to
+pass a ``oauth_callback`` argument, in which case you don't need to
 pass an ``oauth_verifier`` to ``access_token``:
 
  >>> import foursquare
