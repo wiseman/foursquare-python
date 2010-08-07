@@ -26,6 +26,8 @@ Example usage:
 
 * OAuth
 
+Without a callback URL:
+
 >>> import foursquare
 >>> credentials = foursquare.OAuthCredentials(oauth_key, oauth_secret)
 >>> fs = foursquare.Foursquare(credentials)
@@ -109,12 +111,14 @@ def def_method(name, auth_required=False, server=API_SERVER,
 def_method('request_token',
            server=OAUTH_SERVER,
            returns='oauth_token',
+           optional=['oauth_callback'],
            url_template=OAUTH_URL_TEMPLATE,
            namespaced=False)
 
 def_method('authorize',
            server=OAUTH_SERVER,
            required=['token'],
+           optional=['oauth_callback'],
            returns='request_url',
            url_template=OAUTH_URL_TEMPLATE,
            namespaced=False)
