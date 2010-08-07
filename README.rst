@@ -50,7 +50,7 @@ specify a callback URL, they made ``oauth_verifier`` argument a
 required argument to the ``access_token`` method.  The
 ``oauth_verifier`` that you need to pass to ``access_token`` comes
 from the URL that foursquare redirects the user to after
-authorization.::
+authorization::
 
  >>> import foursquare
  >>> credentials = foursquare.OAuthCredentials(oauth_key, oauth_secret)
@@ -74,7 +74,7 @@ authorization.::
 The above is the most correct method, according to the `OAuth 1.0A
 spec`_.  But foursquare supports a less stringent mode if you don't
 pass a ``oauth_callback`` argument, in which case you don't need to
-pass an ``oauth_verifier`` to ``access_token``.::
+pass an ``oauth_verifier`` to ``access_token``::
 
  >>> import foursquare
  >>> credentials = foursquare.OAuthCredentials(oauth_key, oauth_secret)
