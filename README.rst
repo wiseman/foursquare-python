@@ -71,10 +71,10 @@ authorization.
  >>> fs.user()
  {'user': {'city': {'geolat': 34.0443, 'name': 'Los Angeles', ...}}}
 
-The above is the most correct method, according to the OAuth 1.0A
-spec.  But foursquare supports a less stringent mode if you don't pass
-a ``oauth_callback` argument, in which case you don't need to pass an
-``oauth_verifier`` to ``access_token``:
+The above is the most correct method, according to the `OAuth 1.0A
+spec`_.  But foursquare supports a less stringent mode if you don't
+pass a ``oauth_callback` argument, in which case you don't need to
+pass an ``oauth_verifier`` to ``access_token``:
 
  >>> import foursquare
  >>> credentials = foursquare.OAuthCredentials(oauth_key, oauth_secret)
@@ -97,3 +97,4 @@ a ``oauth_callback` argument, in which case you don't need to pass an
 .. _John Wiseman: http://twitter.com/lemonodor
 .. _LICENSE.txt: http://github.com/wiseman/foursquare-python/blob/master/LICENSE.txt
 .. _oauth.py: http://oauth.googlecode.com/svn/code/python/oauth/
+.. _OAuth 1.0A spec: http://oauth.net/core/1.0a/
