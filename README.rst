@@ -6,21 +6,22 @@ foursquare
 
 This Python module lets you access the `foursquare API`_.  It supports
 unauthenticated access, `basic HTTP authentication`_, and `OAuth`_
-authorization.
+authorization.  This code is based on a `similar module for Fire
+Eagle`_ made by Steve Marshall.
 
 It supports all the v1 foursquare API methods as of 2009-12-17.
 
 This module requires Leah Culver's oauth module, `oauth.py`_.
 
-API method names are the same in Python, except for methods like
-"friend/requests", which are translated to names like
-"friend_requests" in Python.
+Foursquare API method names are the same in Python, except for methods
+like ``friend/requests``, which are translated to names like
+``friend_requests`` in Python.
 
-All arguments are keyword arguments, though required arguments come
-first and are in the order listed by the API documentation.
+All method arguments are keyword arguments, though required arguments
+come first and are in the order listed by the API documentation.
 
-All methods return the Python equivalent of the JSON response returned
-by the corresponding API method, if there is a response.
+All methods return the parsed Python equivalent of the JSON response
+returned by the corresponding API method, if there is a response.
 
 Examples
 --------
@@ -71,7 +72,7 @@ authorization::
  >>> fs.user()
  {'user': {'city': {'geolat': 34.0443, 'name': 'Los Angeles', ...}}}
 
-The above is the most correct method, according to the `OAuth 1.0A
+The above is the most correct method according to the `OAuth 1.0A
 spec`_.  But foursquare supports a less stringent mode if you don't
 pass a ``oauth_callback`` argument, in which case you don't need to
 pass an ``oauth_verifier`` to ``access_token``::
@@ -92,6 +93,7 @@ pass an ``oauth_verifier`` to ``access_token``::
 
 
 .. _foursquare API: http://groups.google.com/group/foursquare-api
+.. _similar module for Fire Eagle: http://github.com/SteveMarshall/fire-eagle-python-binding/
 .. _basic HTTP authentication: http://en.wikipedia.org/wiki/Basic_access_authentication
 .. _OAuth: http://groups.google.com/group/foursquare-api/web/oauth
 .. _John Wiseman: http://twitter.com/lemonodor
