@@ -45,13 +45,47 @@ Basic HTTP authentication::
 
 OAuth::
 
+When foursquare added support for the ``oauth_callback`` parameter to
+specify a callback URL, they made ``oauth_verifier`` argument a
+required argument to the ``access_token`` method.  The
+``oauth_verifier`` that you need to pass to ``access_token`` comes
+from the URL that foursquare redirects the user to after
+authorization.
+
  >>> import foursquare
  >>> credentials = foursquare.OAuthCredentials(oauth_key, oauth_secret)
  >>> fs = foursquare.Foursquare(credentials)
- >>> app_token = fs.request_token()
+ >>> app_token = fs.request_token(oauth_callback='http://myapp.example/')
  >>> auth_url = fs.authorize(app_token)
- >>> # Go to auth_url and authorize, then continue.
- >>> user_token = fs.access_token(app_token)
+
+ # Go to auth_url and authorize.  Once you've authorized, foursquare
+ # will redirect you to a URL that looks like this:
+ #
+ #   http://myapp.example/?oauth_verifier=1234
+ #
+ # Take that oauth_verifier parameter and pass it to access_token.
+
+ >>> oauth_verifier = '1234'
+ >>> user_token = fs.access_token(app_token, oauth_verifier)
+ >>> credentials.set_access_token(user_token)
+ >>> fs.user()
+ {'user': {'city': {'geolat': 34.0443, 'name': 'Los Angeles', ...}}}
+
+The above is the most correct method, according to the OAuth 1.0A
+spec.  But foursquare supports a less stringent mode if you don't pass
+a ``oauth_callback` argument, in which case you don't need to pass an
+``oauth_verifier`` to ``access_token``:
+
+ >>> import foursquare
+ >>> credentials = foursquare.OAuthCredentials(oauth_key, oauth_secret)
+ >>> fs = foursquare.Foursquare(credentials)
+ >>> app_token = fs.request_token(oauth_callback='http://myapp.example/')
+ >>> auth_url = fs.authorize(app_token)
+
+ # Go to auth_url and authorize.  Note that we're passing an empty
+ # string for the oauth_verifier.
+
+ >>> user_token = fs.access_token(app_token, '')
  >>> credentials.set_access_token(user_token)
  >>> fs.user()
  {'user': {'city': {'geolat': 34.0443, 'name': 'Los Angeles', ...}}}
