@@ -62,9 +62,10 @@ authorization::
  # Go to auth_url and authorize.  Once you've authorized, foursquare
  # will redirect you to a URL that looks like this:
  #
- #   http://myapp.example/?oauth_verifier=1234
+ #   http://myapp.example/?oauth_verifier=1234&oauth_token=abc9
  #
- # Take that oauth_verifier parameter and pass it to access_token.
+ # Take the oauth_verifier parameter value and pass it to
+ # access_token.
 
  >>> oauth_verifier = '1234'
  >>> user_token = fs.access_token(app_token, oauth_verifier)
@@ -83,8 +84,12 @@ pass an ``oauth_verifier`` to ``access_token``::
  >>> app_token = fs.request_token(oauth_callback='http://myapp.example/')
  >>> auth_url = fs.authorize(app_token)
 
- # Go to auth_url and authorize.  Note that we're passing an empty
- # string for the oauth_verifier.
+ # Go to auth_url and authorize.  Once you've authorized, foursquare
+ # will redirect you to your app's registered callback URL.  You don't
+ # need that URL; we're going to call the access_token method
+ # directly.
+ #
+ # Note that we're passing an empty string for the oauth_verifier.
 
  >>> user_token = fs.access_token(app_token, '')
  >>> credentials.set_access_token(user_token)
