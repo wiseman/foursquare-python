@@ -484,7 +484,7 @@ class Foursquare:
                 token=token)
 
         # If the return type is the request_url, simply build the URL and
-        # return it witout executing anything
+        # return it without executing anything
         if 'returns' in meta and meta['returns'] == 'request_url':
             return cred_url
 
